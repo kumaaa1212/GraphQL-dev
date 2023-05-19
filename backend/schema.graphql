@@ -1,0 +1,29 @@
+type Link{
+  id:ID!
+  descriptoin:String!
+  url:String!
+  postedBy:User
+}
+type Query{
+	feed :[Link]
+}
+type Mutation{
+  post(url:String!,descriptoin:String!):Link!
+  signup(email:String!,password:String!,name:String!):AuthPayload
+  login(email:String!,password:String!):AuthPayload
+}
+type AuthPayload{
+  token:String
+  user:User
+}
+type User{
+  id:ID!
+  name:String!
+  email:String!
+  links:[Link!]!
+}
+
+
+#!はないといけないが取得する時の場合は書かなくてもいい。追加する時は書かないといけない
+
+#IDと設定すると自動でIDが設定される
